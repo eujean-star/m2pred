@@ -1,0 +1,11 @@
+name: plpred
+channels: #Como acontece a busca desses canais?
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.8
+  - jupyterlab
+  - openblas #usada como base para algumas coisas que o python instala
+  - pip
+  - pip:
+    - -r requirements.txt
