@@ -4,3 +4,5 @@ numpy
 biopython
 pytest
 flask
+matplotlib
+seaborn

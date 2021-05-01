@@ -1,5 +1,6 @@
 setup:
-	conda env create --file environment.yml
+	conda env create --file environment.yml || conda env update --file environment.yml
 
-hello:
-	echo "Hello, teste do make setup com sucesso"
+analysis:
+	cd notebooks && jupyter nbconvert --to html EDA.ipynb
+
