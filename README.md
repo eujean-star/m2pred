@@ -11,3 +11,7 @@
     ```
      $ make setup
     ```
+- `data/`: pasta contendo os dados utilizados no programa.
+     - `raw`: dados brutos
+     - `processed`: dados processados 
+     
