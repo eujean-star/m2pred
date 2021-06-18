@@ -1,4 +1,4 @@
-# plpred
+# PLPRED
      predict a protein subcellular location
 
 ## Project Structure 
