@@ -4,3 +4,5 @@ setup:
 analysis:
 	cd notebooks && jupyter nbconvert --to html EDA.ipynb
 
+preprocessing:
+	python plpred/preprocessing.py
