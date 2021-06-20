@@ -35,7 +35,7 @@ def generate_aa_compostion_df(file_path:str, membrane_label:int):
     return df
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     print('Abrindo arquivo membrana.fasta')
     df_membrane = generate_aa_compostion_df('data/raw/membrane.fasta', membrane_label=1)
     print('Abrindo arquivo citoplasma.fasta')
