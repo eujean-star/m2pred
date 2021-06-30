@@ -36,12 +36,11 @@ def generate_aa_compostion_df(file_path:str, membrane_label:int):
 
 
 if __name__ == "__main__":
-    print('Abrindo arquivo membrana.fasta')
+   
     df_membrane = generate_aa_compostion_df('data/raw/membrane.fasta', membrane_label=1)
-    print('Abrindo arquivo citoplasma.fasta')
     df_cytoplasm = generate_aa_compostion_df('data/raw/cytoplasm.fasta', membrane_label=0)
-    
-    print('unindo os datasets')
     df_final = pd.concat([df_membrane, df_cytoplasm])
-    print('Salvo com sucesso')
+    
+    
     df_final.to_csv('data/processed/data_processed.csv', index=False)
+    print('Salvo com sucesso')
