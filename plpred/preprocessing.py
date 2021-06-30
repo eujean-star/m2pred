@@ -6,22 +6,39 @@ def compute_aa(protein_seq:str) -> dict:
     """
     Compute aminoacids composition of a given protein sequence
 
-    parameters
+    Parameters
     ==========
     protein_sequence: str
-        sequence of the protein to be processed.
+        Protein's sequence that must be processed.
     
     Returns
     =======
     aa_composition: dict
-        dictionary containing the relative abundance of each aminoacid.
-    
+        Dictionary containing the relative abundance of each aminoacid.
     """
+    
+    
     analyzer = ProtParam.ProteinAnalysis(str(protein_seq))
     aa_composition = analyzer.get_amino_acids_percent()
     return aa_composition
-''' Criação do dataframe com os dados'''
-def generate_aa_compostion_df(file_path:str, membrane_label:int):
+
+def generate_aa_compostion_df(file_path:str, membrane_label:int) -> pd.DataFrame:
+    
+    '''
+    > Return a DataFrame with the relative abundance of each aminoacid < .
+
+    Parameter:
+    =========
+    File_path:str
+        Requires file path to be processed. 
+    
+    Membrane_label:int
+        If 1, indicates that protein it's from membrane, else: it's from cytoplasm
+    
+    Returns: pd.Dataframe
+    =====================
+        pandas DataFrame
+    '''
     
     df = pd.DataFrame()
     handle = open(file_path)
@@ -36,12 +53,9 @@ def generate_aa_compostion_df(file_path:str, membrane_label:int):
 
 
 if __name__ == "__main__":
-    print('Abrindo arquivo membrana.fasta')
     df_membrane = generate_aa_compostion_df('data/raw/membrane.fasta', membrane_label=1)
-    print('Abrindo arquivo citoplasma.fasta')
     df_cytoplasm = generate_aa_compostion_df('data/raw/cytoplasm.fasta', membrane_label=0)
-    
-    print('unindo os datasets')
+    print('Unindo os datasets')
     df_final = pd.concat([df_membrane, df_cytoplasm])
-    print('Salvo com sucesso')
     df_final.to_csv('data/processed/data_processed.csv', index=False)
+    print('Salvo com sucesso')
