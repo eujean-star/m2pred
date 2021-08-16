@@ -34,9 +34,7 @@ def generate_aa_compostion_df(file_path:str, membrane_label:int):
     
     return df
 
-
-if __name__ == "__main__":
-   
+def main():
     df_membrane = generate_aa_compostion_df('data/raw/membrane.fasta', membrane_label=1)
     df_cytoplasm = generate_aa_compostion_df('data/raw/cytoplasm.fasta', membrane_label=0)
     df_final = pd.concat([df_membrane, df_cytoplasm])
@@ -44,3 +42,7 @@ if __name__ == "__main__":
     
     df_final.to_csv('data/processed/data_processed.csv', index=False)
     print('Salvo com sucesso')
+
+if __name__ == "__main__":
+    main()
+    
