@@ -1,6 +1,6 @@
-from models.base_model import BaseModel
-from sklearn import svm
+from models import BaseModel
+from sklearn.svm import SVC
 
 class PlpredSVM(BaseModel):
     def __init__(self):
-        self.estimator = svm
+        self.estimator = SVC

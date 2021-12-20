@@ -1,8 +1,8 @@
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
-from models import PlpredRF
-from models import BaseModel
-from models import PlpredNN
+from plpred.models import PlpredRF
+from plpred.models import BaseModel
+from plpred.models import PlpredNN
 import pandas as pd
 import argparse
 import pickle
