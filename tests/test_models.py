@@ -46,4 +46,5 @@ def test_prednn_save():
     assert os.path.isfile(temfile)
 
 #implementar outros testes para os demais modelos. 
+#implementar outros testes para as demais modelos. 
 #se tiver f, é porque p teste falhou
