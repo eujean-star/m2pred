@@ -1,6 +1,8 @@
+from os import path
 from Bio import SeqIO
 from Bio.SeqUtils import ProtParam
 import pandas as pd
+import argparse
 
 def compute_aa(protein_seq:str) -> dict:
     """
@@ -34,13 +36,22 @@ def generate_aa_compostion_df(file_path:str, membrane_label:int):
     
     return df
 
+def main():
+    argument_parser = argparse.ArgumentParser(description='plpred-preprocess: Data processing tool')
+
+    argument_parser.add_argument('-m', '--membrane_proteins', required=True, help='Path to membrane file location (.fasta)' )
+    argument_parser.add_argument('-c', '--cytoplasm_proteins', required=True, help='Path to citoplasm file location (.fasta)' )
+    argument_parser.add_argument('-o', '--output_file', required=True, help='Path to destination of file of both files mergeded' )
+    argument = argument_parser.parse_args()
+
+    df_membrane = generate_aa_compostion_df(argument.membrane_proteins, membrane_label=1   )
+    df_cytoplasm = generate_aa_compostion_df(argument.cytoplasm_proteins, membrane_label=0 )
+    df_processed = pd.concat([df_membrane, df_cytoplasm])
+    df_processed.to_csv(argument.output_file, index=False)
+    
+
+    argument = argument_parser.parse_args()
+
 
 if __name__ == "__main__":
-   
-    df_membrane = generate_aa_compostion_df('data/raw/membrane.fasta', membrane_label=1)
-    df_cytoplasm = generate_aa_compostion_df('data/raw/cytoplasm.fasta', membrane_label=0)
-    df_final = pd.concat([df_membrane, df_cytoplasm])
-    
-    
-    df_final.to_csv('data/processed/data_processed.csv', index=False)
-    print('Salvo com sucesso')
+    main()

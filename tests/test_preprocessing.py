@@ -1,5 +1,5 @@
-from plpred.processing import compute_aa
-from plpred.processing import generate_aa_compostion_df
+from plpred.processing.preprocessing import compute_aa
+from plpred.processing.preprocessing import generate_aa_compostion_df
 
 def test_compute_aa_composition_homopolymer():
     protein_seq = 'TTTTTTTTT'
