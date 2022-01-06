@@ -22,7 +22,7 @@ def compute_aa(protein_seq:str) -> dict:
     analyzer = ProtParam.ProteinAnalysis(str(protein_seq))
     aa_composition = analyzer.get_amino_acids_percent()
     return aa_composition
-''' Criação do dataframe com os dados'''
+
 def generate_aa_compostion_df(file_path:str, membrane_label:int):
     
     df = pd.DataFrame()
@@ -37,6 +37,7 @@ def generate_aa_compostion_df(file_path:str, membrane_label:int):
     return df
 
 def main():
+
     argument_parser = argparse.ArgumentParser(description='plpred-preprocess: Data processing tool')
 
     argument_parser.add_argument('-m', '--membrane_proteins', required=True, help='Path to membrane file location (.fasta)' )

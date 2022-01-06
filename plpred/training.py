@@ -7,9 +7,9 @@ import pandas as pd
 import argparse
  
 
- #Atualizar a documentação. 
-def train_model(preprocessed_csv:str, output, model=BaseModel) -> BaseModel:
-    
+ 
+def train_model(path:str, model: BaseModel) -> BaseModel:
+
     '''
     Train a machine learning model to classify membrane proteins.
 
@@ -28,6 +28,7 @@ def train_model(preprocessed_csv:str, output, model=BaseModel) -> BaseModel:
     y = df['membrane']
 
     X_train, X_test, y_train, y_test = train_test_split(X,y)
+
     model.fity(X=X_train, y=y_train)
     report = model.validation(X_test, y_test)
     
@@ -57,4 +58,4 @@ def main():
         print(report)
 
 if __name__ == '__main__':
-    main()     
+    main() 

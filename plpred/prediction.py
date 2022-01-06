@@ -1,9 +1,10 @@
+
 from plpred.preprocessing import generate_aa_compostion_df, compute_aa
+from preprocessing import compute_aa
 from Bio import SeqIO
 import pandas as pd
 import argparse
 import pickle
-
 
 
 def run_model(path, model_path) -> pd.DataFrame:
@@ -22,11 +23,11 @@ def run_model(path, model_path) -> pd.DataFrame:
     Returns:
     -------
     Dataframe pandas object
-    
     '''
-
+    
     with open(model_path, 'rb') as handle:
         model = pickle.load(handle)
+
 
     handle = open(path)
     parser = SeqIO.parse(handle, 'fasta')
@@ -65,4 +66,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

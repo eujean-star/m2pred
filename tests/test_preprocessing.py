@@ -1,5 +1,6 @@
 from plpred.processing.preprocessing import compute_aa
 from plpred.processing.preprocessing import generate_aa_compostion_df
+from plpred.preprocessing import compute_aa
 
 def test_compute_aa_composition_homopolymer():
     protein_seq = 'TTTTTTTTT'
@@ -19,6 +20,7 @@ def test_compute_aa_composition_return_type():
     protein_sequence = 'AWGY'
     aa_composition = compute_aa(protein_sequence)
     assert isinstance(aa_composition, dict)
+
     
 def test_generate_aa_composition_column_number():
     file_path = '/home/jan/plpred/data/raw/membrane.fasta'
@@ -37,11 +39,3 @@ def test_generate_aa_composition_membrane_membrane_columns():
     for membrane_label in membrane_labels:
         df_aa_composition = generate_aa_compostion_df(file_path, membrane_label=membrane_label)
         assert all(df_aa_composition['membrane'] == membrane_label)
-
-    
-test_compute_aa_composition_heteropolymer()
-test_compute_aa_composition_return_type()
-test_generate_aa_composition_column_number()
-test_generate_aa_composition_membrane_membrane_columns()
-test_compute_aa_composition_homopolymer()
-
