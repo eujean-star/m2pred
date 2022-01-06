@@ -1,4 +1,4 @@
-name: plpred
+name: m2pred
 channels: #Como acontece a busca desses canais?
   - conda-forge
   - bioconda
